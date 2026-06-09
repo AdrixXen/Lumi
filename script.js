@@ -164,10 +164,17 @@ function launchConfetti() {
 }
 
 // ── COUNTERS ───────────────────────────────────────────
-// ── COUNTERS ───────────────────────────────────────────
 function updateCounters() {
   const now = new Date();
 
+  // Tiempo juntos desde el 9 de marzo de 2026
+  const diffTogether = now - ANNIVERSARY_DATE;
+
+  $("cDays").textContent = Math.floor(diffTogether / 86400000);
+  $("cHours").textContent = Math.floor((diffTogether % 86400000) / 3600000);
+  $("cMinutes").textContent = Math.floor((diffTogether % 3600000) / 60000);
+
+  // Próximo día 9 del siguiente mes
   let nextMonthiversary = new Date(
     now.getFullYear(),
     now.getMonth(),
@@ -181,19 +188,11 @@ function updateCounters() {
     nextMonthiversary.setMonth(nextMonthiversary.getMonth() + 1);
   }
 
-  const diff = nextMonthiversary - now;
+  const diffNext = nextMonthiversary - now;
 
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-
-  $("cDays").textContent = days;
-  $("cHours").textContent = hours;
-  $("cMinutes").textContent = minutes;
-
-  $("nDays").textContent = days;
-  $("nHours").textContent = hours;
-  $("nMinutes").textContent = minutes;
+  $("nDays").textContent = Math.floor(diffNext / 86400000);
+  $("nHours").textContent = Math.floor((diffNext % 86400000) / 3600000);
+  $("nMinutes").textContent = Math.floor((diffNext % 3600000) / 60000);
 }
 // ── RANDOM PHRASE ──────────────────────────────────────
 function setRandomPhrase() {
