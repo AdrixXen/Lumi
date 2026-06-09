@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Para Lumi ❤️ — Feliz Aniversario</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Dancing+Script:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="starsCanvas"></canvas>
+    <div id="particles"></div>
+    <div id="heartRain"></div>
+    <div id="confettiContainer"></div>
+
+    <div id="autoplayGate" class="autoplay-gate">
+      <div class="gate-inner">
+        <div class="gate-stars">✨</div>
+        <button id="startBtn" class="start-btn">
+          ✨ Presiona aquí para comenzar nuestra historia ✨
+        </button>
+      </div>
+    </div>
+
+    <div id="finale" class="finale-overlay hidden">
+      <canvas id="starNameCanvas"></canvas>
+      <div id="finaleText" class="finale-text">
+        <p id="finaleLine1" class="finale-line hidden">
+          De todas las personas que pude conocer,
+        </p>
+        <p id="finaleLine2" class="finale-line hidden">
+          mi favorita siempre serás tú.
+        </p>
+        <p id="finaleLine3" class="finale-line hidden finale-anniversary">
+          Feliz aniversario, Lumi ❤️
+        </p>
+      </div>
+      <button id="closeFinale" class="close-finale hidden">Volver ✦</button>
+    </div>
+
+    <div class="wrapper">
+      <section class="hero">
+        <div class="lumi-glow-title">
+          <span class="lumi-halo"></span>
+          <h1 class="lumi-name">Lumi</h1>
+        </div>
+        <p class="hero-sub dancing">una carta de amor para ti</p>
+        <div id="envelope" class="envelope" title="Toca para abrir">
+          <div class="env-flap"></div>
+          <div class="env-body">
+            <span class="env-heart">❤️</span>
+          </div>
+          <p class="env-hint">Toca el sobre para abrir tu carta</p>
+        </div>
+      </section>
+
+      <section class="counters-section section-card" id="counters">
+        <h2 class="section-title">✦ Nuestro Tiempo Juntos ✦</h2>
+        <div class="counters-grid">
+          <div class="counter-box">
+            <span id="cDays" class="counter-num">0</span>
+            <span class="counter-label">días</span>
+          </div>
+          <div class="counter-box">
+            <span id="cHours" class="counter-num">0</span>
+            <span class="counter-label">horas</span>
+          </div>
+          <div class="counter-box">
+            <span id="cMinutes" class="counter-num">0</span>
+            <span class="counter-label">minutos</span>
+          </div>
+        </div>
+        <div class="next-anniversary">
+          <p class="next-label">Próximo aniversario en</p>
+          <div class="counters-grid small">
+            <div class="counter-box sm">
+              <span id="nDays" class="counter-num">—</span>
+              <span class="counter-label">días</span>
+            </div>
+            <div class="counter-box sm">
+              <span id="nHours" class="counter-num">—</span>
+              <span class="counter-label">horas</span>
+            </div>
+            <div class="counter-box sm">
+              <span id="nMinutes" class="counter-num">—</span>
+              <span class="counter-label">minutos</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="letter" class="letter-section hidden">
+        <div class="letter-paper">
+          <div class="letter-deco top-deco">✦ ❤️ ✦</div>
+          <p class="random-phrase dancing" id="randomPhrase"></p>
+          <h2 class="letter-greeting playfair">Feliz aniversario, mi Lumi.</h2>
+          <p class="letter-body">
+            Desde que llegaste a mi vida, todo cambió de una forma hermosa.
+            Antes mis días podían ser normales, pero contigo cada momento tiene
+            una luz especial. Tu nombre significa mucho para mí, porque
+            <em>Lumi</em> me recuerda a la luz, y eso eres tú: la persona que
+            iluminó mi mundo cuando más lo necesitaba.
+          </p>
+          <p class="letter-body">
+            Gracias por estar conmigo, por hacerme sonreír, por darme paz y por
+            convertir momentos simples en recuerdos inolvidables. No eres solo
+            alguien especial, eres esa luz bonita que quiero cuidar todos los
+            días.
+          </p>
+          <blockquote class="letter-quote dancing">
+            "Desde que llegaste a mi vida, mi mundo se iluminó."
+          </blockquote>
+          <p class="letter-body letter-sign">
+            Te quiero mucho, Lumi. Feliz aniversario, mi luz hermosa.
+          </p>
+          <div class="letter-deco">✦ ❤️ ✦</div>
+        </div>
+      </section>
+
+      <section id="lumiMeaning" class="section-card meaning-section hidden">
+        <h2 class="section-title playfair">¿Qué significa Lumi para mí?</h2>
+        <div class="meaning-glow"><span class="meaning-icon">🌟</span></div>
+        <p class="meaning-text">
+          Lumi significa luz. Y desde que llegaste a mi vida, iluminaste cada
+          rincón de mi mundo. Donde antes había días comunes, ahora hay
+          recuerdos especiales. Donde había silencio, ahora hay risas. Eres la
+          luz que guía mis pasos y la persona que hace que cada día tenga un
+          motivo para sonreír.
+        </p>
+      </section>
+
+      <section id="reasons" class="section-card reasons-section hidden">
+        <h2 class="section-title">💖 Razones por las que te amo</h2>
+        <ul id="reasonsList" class="reasons-list"></ul>
+        <button id="nextReason" class="pill-btn">Ver siguiente razón ✨</button>
+      </section>
+
+      <section id="secrets" class="section-card secrets-section hidden">
+        <h2 class="section-title">💌 Cartas Secretas</h2>
+        <p class="secrets-hint">
+          Toca cada sobre para revelar un mensaje oculto
+        </p>
+        <div class="secrets-grid" id="secretsGrid"></div>
+      </section>
+
+      <section id="playlist" class="section-card playlist-section hidden">
+        <h2 class="section-title">🎵 Nuestra Playlist</h2>
+        <div id="ytPlayerWrapper">
+          <div id="ytPlayer"></div>
+        </div>
+        <div class="visualizer" id="visualizer">
+          <div class="vis-bars">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+          </div>
+          <span class="vis-label" id="nowPlaying">— Sin reproducir —</span>
+        </div>
+        <div class="player-controls">
+          <button class="ctrl-btn" id="prevBtn">⏮</button>
+          <button class="ctrl-btn big" id="playBtn">▶</button>
+          <button class="ctrl-btn" id="nextBtn">⏭</button>
+        </div>
+        <ul class="song-list" id="songList"></ul>
+        <div class="add-song-box">
+          <input
+            type="text"
+            id="songUrl"
+            class="song-input"
+            placeholder="Pega un enlace de YouTube..."
+          />
+          <input
+            type="text"
+            id="songName"
+            class="song-input"
+            placeholder="Nombre de la canción..."
+          />
+          <button class="pill-btn" id="addSongBtn">+ Agregar canción</button>
+        </div>
+      </section>
+
+      <section id="finaleSection" class="finale-trigger hidden">
+        <button id="triggerFinale" class="finale-btn">
+          Ver el final de nuestra historia ✨
+        </button>
+      </section>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
