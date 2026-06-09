@@ -1,7 +1,7 @@
 "use strict";
 
 // 🗓 CAMBIA ESTA FECHA por el día que comenzaron
-const ANNIVERSARY_DATE = new Date(2025, 2, 9, 0, 0, 0);
+const ANNIVERSARY_DATE = new Date(2026, 2, 9, 0, 0, 0);
 
 let playlist = [
   { name: "San Lucas – Kevin Kaarl", id: "7-Ikexq03O0" },
