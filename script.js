@@ -164,25 +164,37 @@ function launchConfetti() {
 }
 
 // ── COUNTERS ───────────────────────────────────────────
+// ── COUNTERS ───────────────────────────────────────────
 function updateCounters() {
   const now = new Date();
-  const diff = now - ANNIVERSARY_DATE;
+
+  let nextMonthiversary = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    9,
+    0,
+    0,
+    0
+  );
+
+  if (nextMonthiversary <= now) {
+    nextMonthiversary.setMonth(nextMonthiversary.getMonth() + 1);
+  }
+
+  const diff = nextMonthiversary - now;
+
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff % 86400000) / 3600000);
   const minutes = Math.floor((diff % 3600000) / 60000);
+
   $("cDays").textContent = days;
   $("cHours").textContent = hours;
   $("cMinutes").textContent = minutes;
 
-  const nextAnni = new Date(ANNIVERSARY_DATE);
-  nextAnni.setFullYear(now.getFullYear());
-  if (nextAnni <= now) nextAnni.setFullYear(now.getFullYear() + 1);
-  const nd = nextAnni - now;
-  $("nDays").textContent = Math.floor(nd / 86400000);
-  $("nHours").textContent = Math.floor((nd % 86400000) / 3600000);
-  $("nMinutes").textContent = Math.floor((nd % 3600000) / 60000);
+  $("nDays").textContent = days;
+  $("nHours").textContent = hours;
+  $("nMinutes").textContent = minutes;
 }
-
 // ── RANDOM PHRASE ──────────────────────────────────────
 function setRandomPhrase() {
   $("randomPhrase").textContent =
